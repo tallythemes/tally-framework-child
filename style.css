@@ -1,0 +1,16 @@
+/*
+Theme Name: Tally Framework Child
+Theme URI: http://tallythemes.com/
+Author: TallyThemes
+Author URI:http://tallythemes.com/
+Description: Stater child theme for Tally Framework
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, right-sidebar, flexible-width, custom-menu, featured-images, full-width-template, bbpress, buddypress
+Text Domain: tallythemes
+
+Template: tally-framework
+*/
+
+@import url("../tally-framework/style.css");
