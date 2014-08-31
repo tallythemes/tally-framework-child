@@ -18,12 +18,11 @@ add_filter( 'tallykit_galleryae6f1f6116e418c0d988800ca5f95c17', '__return_true')
 
 
 /*  Child theme actions to overwrite main theme
-
 ------------------------------------------------------*/
 add_action( 'after_setup_theme', 'tally_child_theme_actions' );
 function tally_child_theme_actions(){
-	
-	
+		
+	//echo tally_get_serialize_option_data();
 	
 }
 
@@ -31,9 +30,15 @@ function tally_child_theme_actions(){
 -------------------------------------------------------*/
 add_filter('tally_option_std', 'tally_child_option_std_filter', 15);
 function tally_child_option_std_filter($option){
-
+	$default_options_file = file_get_contents( TALLY_CHILD_DRI . '/demo/theme-options.txt');
+	$default_options = unserialize( tally_decode( $default_options_file ) );
 	
+	if(is_array($default_options)){
+		$option = $default_options;
+	}
+	
+	$option['site_logo'] = TALLY_CHILD_URL.'/images/logo.png';
+	$option['site_logo_retina'] = TALLY_CHILD_URL.'/images/logo@2x.png';
 
 	return $option;	
-
 }
