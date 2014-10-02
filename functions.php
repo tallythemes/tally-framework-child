@@ -21,6 +21,10 @@ add_filter( 'tallykit_galleryae6f1f6116e418c0d988800ca5f95c17', '__return_true')
 ------------------------------------------------------*/
 add_action( 'after_setup_theme', 'tally_child_theme_actions' );
 function tally_child_theme_actions(){
+	if ( ! isset( $content_width ) ) $content_width = 1170;
+	
+	add_filter('tally_option_std', 'tally_child_option_std_filter', 15);
+	add_action( 'tgmpa_register', 'tally_child_register_required_plugins' );
 		
 	//echo tally_get_serialize_option_data();
 	
@@ -31,446 +35,24 @@ function tally_child_theme_actions(){
 	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
 }
 
+
 /*  Theme option STD
 -------------------------------------------------------*/
-add_filter('tally_option_std', 'tally_child_option_std_filter', 15);
 function tally_child_option_std_filter($option){
-	$default_options_file = file_get_contents( TALLY_CHILD_DRI . '/demo/theme-options.txt');
-	$default_options = unserialize( tally_decode( $default_options_file ) );
 	
-	if(is_array($default_options)){
-		$option = $default_options;
+	if(file_exists(TALLY_CHILD_DRI . '/demo/theme-options.txt')){
+		$default_options_file = file_get_contents( TALLY_CHILD_DRI . '/demo/theme-options.txt');
+		$default_options = unserialize( tally_decode( $default_options_file ) );
+		
+		if(is_array($default_options)){
+			$option = $default_options;
+		}
 	}
 	
 	$option['site_logo'] = TALLY_CHILD_URL.'/images/logo.png';
 	$option['site_logo_retina'] = TALLY_CHILD_URL.'/images/logo@2x.png';
 
 	return $option;	
-}
-
-
-
-add_filter('tallykit_FrontPage', 'tally_child_front_page', 100);
-function tally_child_front_page(){	
-	$array = array();
-	/*	Row 0
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Slideshow',
-				'class'	=> '',
-				'type'	=> 'slideshow',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_0 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	/*	Row 1
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '3',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Accordion',
-				'class'	=> '',
-				'type'	=> 'accordion',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '3',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Callour',
-				'class'	=> '',
-				'type'	=> 'callout',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '3',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Map',
-				'class'	=> '',
-				'type'	=> 'map',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '3',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Video',
-				'class'	=> '',
-				'type'	=> 'video',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_1 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '4',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 2
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Blog Grid',
-				'class'	=> '',
-				'type'	=> 'blog_grid',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_2 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 3
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '4',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Toggle',
-				'class'	=> '',
-				'type'	=> 'toggle',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '4',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Tabs',
-				'class'	=> '',
-				'type'	=> 'tab',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '4',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Text',
-				'class'	=> '',
-				'type'	=> 'text',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_3 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '3',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 4
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Text Block',
-				'class'	=> '',
-				'type'	=> 'textblock',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_4 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 5
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Testimonial Slideshow',
-				'class'	=> '',
-				'type'	=> 'testimonial_slideshow',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_5 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 6
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Testimonial Grid',
-				'class'	=> '',
-				'type'	=> 'testimonial_grid',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_6 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 7
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Testimonial Carousel',
-				'class'	=> '',
-				'type'	=> 'testimonial_carousel',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_7 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 8
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Portfolio Slideshow',
-				'class'	=> '',
-				'type'	=> 'portfolio_slideshow',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Portfolio Grid',
-				'class'	=> '',
-				'type'	=> 'portfolio_grid',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_8 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '2',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 9
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Portfolio Carousel',
-				'class'	=> '',
-				'type'	=> 'portfolio_carousel',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_9 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 10
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Portfolio Carousel',
-				'class'	=> '',
-				'type'	=> 'people_carousel',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_10 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 11
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'People Grid',
-				'class'	=> '',
-				'type'	=> 'people_grid',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'People Slideshow',
-				'class'	=> '',
-				'type'	=> 'people_slideshow',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_11 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '2',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 12
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Logo Grid',
-				'class'	=> '',
-				'type'	=> 'logo_grid',
-			),
-		)
-	);
-	$columns[] = array(
-		'col' => '6',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Logo Slideshow',
-				'class'	=> '',
-				'type'	=> 'logo_slideshow',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_12 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '2',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 13
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Logo Carousel',
-				'class'	=> '',
-				'type'	=> 'logo_carousel',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_13 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	/*	Row 14
-	----------------------------------*/
-	$columns = '';
-	$columns[] = array(
-		'col' => '12',
-		'class' => '',
-		'blocks' => array(
-			array(
-				'lable'	=> 'Audio',
-				'class'	=> '',
-				'type'	=> 'audio',
-			),
-		)
-	);
-	$array[] = array(
-		'class'			=> 'row_13 width_1170 color_mood_dark',
-		'div_id'		=> '',
-		'max_columns'	=> '1',
-		'columns'		=> $columns,
-	);
-	
-	
-	return $array;
 }
 
 
@@ -505,11 +87,6 @@ function tally_child_register_required_plugins() {
             'required'  => false,
 		),
 		array(
-            'name'      => 'Intuitive Custom Post Order',
-            'slug'      => 'intuitive-custom-post-order',
-            'required'  => false,
-		),
-		array(
             'name'      => 'Regenerate Thumbnails',
             'slug'      => 'regenerate-thumbnails',
             'required'  => false,
@@ -517,11 +94,6 @@ function tally_child_register_required_plugins() {
 		array(
             'name'      => 'WordPress SEO by Yoast',
             'slug'      => 'wordpress-seo',
-            'required'  => false,
-		),
-		array(
-            'name'      => 'Recent Posts Widget Extended',
-            'slug'      => 'recent-posts-widget-extended',
             'required'  => false,
 		),
 		array(
@@ -542,11 +114,6 @@ function tally_child_register_required_plugins() {
 		array(
             'name'      => 'BuddyPress Connect For Tally Framework',
             'slug'      => 'buddypress-connect-for-tally-framework',
-            'required'  => false,
-		),
-		array(
-            'name'      => 'Flickr Badge Widget',
-            'slug'      => 'flickr-badges-widget',
             'required'  => false,
 		),
 	);
