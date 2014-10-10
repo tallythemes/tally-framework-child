@@ -4,7 +4,7 @@ Theme URI: http://tallythemes.com/
 Author: TallyThemes
 Author URI:http://tallythemes.com/
 Description: Stater child theme for Tally Framework
-Version: 3.0
+Version: 4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, right-sidebar, flexible-width, custom-menu, featured-images, full-width-template, bbpress, buddypress
@@ -13,7 +13,7 @@ Text Domain: tally_child_textdomain
 Template: tally-framework
 
 Cheked with:	0.8.5.1	(framework)
-Checked with:	2.4		(tallykit)
+Checked with:	3.2		(tallykit)
 */
 
 @import url("../tally-framework/style.css");

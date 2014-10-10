@@ -27,6 +27,7 @@ function tally_child_theme_actions(){
 	add_action( 'tgmpa_register', 'tally_child_register_required_plugins' );
 		
 	//echo tally_get_serialize_option_data();
+	//echo tally_check_see();
 	
 	add_filter( 'bbpresstallyc_custom_css', '__return_true');
 	add_filter( 'buddypresstallyc_custom_css', '__return_true');
