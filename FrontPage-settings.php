@@ -16,7 +16,8 @@ $array = array();
 	);
 	$array[] = array(
 		'class'			=> 'row_0 color_mood_dark',
-		'div_id'		=> '',
+		'div_id'		=> 'ss1',
+		'lable'			=> 'Slideshow',
 		'max_columns'	=> '1',
 		'columns'		=> $columns,
 	);
@@ -70,7 +71,7 @@ $array = array();
 	);
 	$array[] = array(
 		'class'			=> 'row_1 width_1170 color_mood_dark',
-		'div_id'		=> '',
+		'div_id'		=> 'ss2',
 		'max_columns'	=> '4',
 		'columns'		=> $columns,
 	);
@@ -136,7 +137,7 @@ $array = array();
 	);
 	$array[] = array(
 		'class'			=> 'row_3 width_1170 color_mood_dark',
-		'div_id'		=> '',
+		'div_id'		=> 'ss3',
 		'max_columns'	=> '3',
 		'columns'		=> $columns,
 	);
@@ -158,7 +159,7 @@ $array = array();
 	);
 	$array[] = array(
 		'class'			=> 'row_4 width_1170 color_mood_dark',
-		'div_id'		=> '',
+		'div_id'		=> 'ss4',
 		'max_columns'	=> '1',
 		'columns'		=> $columns,
 	);
