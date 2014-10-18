@@ -37,6 +37,7 @@ function tally_child_theme_actions(){
 }
 
 
+
 /*  Theme option STD
 -------------------------------------------------------*/
 function tally_child_option_std_filter($option){
