@@ -400,7 +400,7 @@ $array = array();
 	----------------------------------*/
 	$columns = '';
 	$columns[] = array(
-		'col' => '12',
+		'col' => '4',
 		'class' => '',
 		'blocks' => array(
 			array(
@@ -410,8 +410,52 @@ $array = array();
 			),
 		)
 	);
+	$columns[] = array(
+		'col' => '4',
+		'class' => '',
+		'blocks' => array(
+			array(
+				'lable'	=> 'Gallery Single',
+				'class'	=> '',
+				'type'	=> 'gallery_single',
+			),
+		)
+	);
+	$columns[] = array(
+		'col' => '4',
+		'class' => '',
+		'blocks' => array(
+			array(
+				'lable'	=> 'Gallery Archive',
+				'class'	=> '',
+				'type'	=> 'gallery_archive',
+			),
+		)
+	);
 	$array[] = array(
 		'class'			=> 'row_13 width_1170 color_mood_dark',
+		'div_id'		=> '',
+		'max_columns'	=> '4',
+		'columns'		=> $columns,
+	);
+	
+	
+	/*	Row 15
+	----------------------------------*/
+	$columns = '';
+	$columns[] = array(
+		'col' => '12',
+		'class' => '',
+		'blocks' => array(
+			array(
+				'lable'	=> 'Counter Box',
+				'class'	=> '',
+				'type'	=> 'counter_box',
+			),
+		)
+	);
+	$array[] = array(
+		'class'			=> 'row_15 width_1170 color_mood_dark',
 		'div_id'		=> '',
 		'max_columns'	=> '1',
 		'columns'		=> $columns,
