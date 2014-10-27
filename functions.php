@@ -23,7 +23,6 @@ function tally_child_theme_actions(){
 	
 	if ( ! isset( $content_width ) ) $content_width = 1170;
 	
-	add_filter('tally_option_std', 'tally_child_option_std_filter', 15);
 	add_action( 'tgmpa_register', 'tally_child_register_required_plugins' );
 		
 	//echo tally_get_serialize_option_data();
@@ -35,28 +34,6 @@ function tally_child_theme_actions(){
 	
 	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
 }
-
-
-
-/*  Theme option STD
--------------------------------------------------------*/
-function tally_child_option_std_filter($option){
-	
-	if(file_exists(TALLY_CHILD_DRI . '/demo/theme-options.txt')){
-		$default_options_file = file_get_contents( TALLY_CHILD_DRI . '/demo/theme-options.txt');
-		$default_options = unserialize( tally_decode( $default_options_file ) );
-		
-		if(is_array($default_options)){
-			$option = $default_options;
-		}
-	}
-	
-	$option['site_logo'] = TALLY_CHILD_URL.'/images/logo.png';
-	$option['site_logo_retina'] = TALLY_CHILD_URL.'/images/logo@2x.png';
-
-	return $option;	
-}
-
 
 
 /*  TGM Plugin
