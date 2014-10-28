@@ -1,10 +1,22 @@
 <?php
-/*  Child theme actions to overwrite main theme
-------------------------------------------------------*/
-add_action( 'after_setup_theme', 'tally_child_theme_actions', 2 );
-function tally_child_theme_actions(){
+/*  This hook load before the parant theme functions load
+--------------------------------------------------------------------------*/
+add_action( 'after_setup_theme', 'tally_child_load_before_parant_theme', 2);
+function tally_child_load_before_parant_theme(){
 	
-	//add_filter( 'tally614ba1c62845593400f9fa8ea1517faa', '__return_true' );
+	define('TALLY_THEME_STORE_URL', 'http://tallythemes.com/');
+	if ( ! isset( $content_width ) ) $content_width = 1170;
+	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
+}
+
+
+
+/*  This hook load after the parant theme functions load
+--------------------------------------------------------------------------*/
+add_action( 'after_setup_theme', 'tally_child_load_after_parant_theme', 4);
+function tally_child_load_after_parant_theme(){
+
+	add_filter( 'tally614ba1c62845593400f9fa8ea1517faa', '__return_true' );
 	
 	add_filter( 'tallykit_logoa960064244af68fdda5c8dff6ed56710', '__return_true');
 	add_filter( 'tallykit_people543023146d784d67c921609b1825ec38', '__return_true');
@@ -16,15 +28,9 @@ function tally_child_theme_actions(){
 	add_filter( 'tallykit_buddypress50cf7ce0ada06e45fd7a7ccf46ed5340', '__return_true');
 	add_filter( 'tallykit_FrontPagea6ad00a15774817903738705afbefdef', '__return_true');
 	
-	define('TALLY_THEME_STORE_URL', 'http://tallythemes.com/');
-	
-	if ( ! isset( $content_width ) ) $content_width = 1170;
-	
 	add_filter( 'bbpresstallyc_custom_css', '__return_true');
 	add_filter( 'buddypresstallyc_custom_css', '__return_true');
 	add_filter( 'wootallyc_custom_css', '__return_true');
-	
-	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
 	
 	add_filter( 'tally_recommended_plugins', 'tally_child_recommended_plugins');
 	
