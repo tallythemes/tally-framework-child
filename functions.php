@@ -6,6 +6,7 @@ function tally_child_load_before_parant_theme(){
 	
 	define('TALLY_THEME_STORE_URL', 'http://tallythemes.com/');
 	define('TK_THEME_NAME', 'Tally Framework Child');
+	define('TALLY_THEME_NAME', 'Tally Framework Child');
 	
 	if ( ! isset( $content_width ) ) $content_width = 1170;
 	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
