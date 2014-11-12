@@ -1,4 +1,13 @@
 <?php
+/**
+ * Set up the content width value based on the theme's design.
+ *
+ */
+	if ( ! isset( $content_width ) ) {
+		$content_width = 1100;
+	}
+	
+	
 /*  This hook load before the parant theme functions load
 --------------------------------------------------------------------------*/
 add_action( 'after_setup_theme', 'tally_child_load_before_parant_theme', 2);
@@ -7,8 +16,6 @@ function tally_child_load_before_parant_theme(){
 	define('TALLY_THEME_STORE_URL', 'http://tallythemes.com/');
 	define('TK_THEME_NAME', 'Tally Framework Child');
 	define('TALLY_THEME_NAME', 'Tally Framework Child');
-	
-	if ( ! isset( $content_width ) ) $content_width = 1170;
 	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
 }
 
