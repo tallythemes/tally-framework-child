@@ -46,6 +46,7 @@ function tally_child_recommended_plugins($plugins){
 		'name'      => 'TallyKit',
 		'slug'      => 'tallykit',
 		'required'  => true,
+		'force_activation'   => true,
 	);
 	$plugins[] = array(
 		'name'      => 'WP Retina 2x',
