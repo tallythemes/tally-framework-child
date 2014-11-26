@@ -32,6 +32,8 @@ function tally_child_load_after_parant_theme(){
 	add_filter( 'buddypresstallyc_custom_css', '__return_true');
 	add_filter( 'wootallyc_custom_css', '__return_true');
 	
+	add_filter( 'tally_impoter_notice_display', '__return_true');
+	
 	add_filter( 'tally_recommended_plugins', 'tally_child_recommended_plugins');
 	
 	//echo tally_get_serialize_option_data();
