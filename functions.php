@@ -13,9 +13,19 @@
 add_action( 'after_setup_theme', 'tally_child_load_before_parant_theme', 2);
 function tally_child_load_before_parant_theme(){
 	
-	define('TALLY_THEME_STORE_URL', 'http://tallythemes.com/');
+	/* Conostant Setup */
 	define('TK_THEME_NAME', 'Tally Framework Child');
 	define('TALLY_THEME_NAME', 'Tally Framework Child');
+	
+	define('TALLY_THEME_STORE_URL', '#');
+	define('TALLY_THEME_DEMO_URL', esc_url('#'));
+	define('TALLY_THEME_DOC_URL', esc_url('#'));
+	define('TALLY_THEME_SUPPORT_URL', esc_url('#'));
+	define('TALLY_THEME_ORG_URL', '');
+	define('TALLY_THEME_MORE_URL', esc_url('#'));
+	
+	
+	/* Textdomain Setup */
 	load_theme_textdomain( 'tally_child_textdomain', get_stylesheet_directory().'/languages' );
 }
 
@@ -25,16 +35,25 @@ function tally_child_load_before_parant_theme(){
 --------------------------------------------------------------------------*/
 add_action( 'after_setup_theme', 'tally_child_load_after_parant_theme', 4);
 function tally_child_load_after_parant_theme(){
-
+	
+	/* Theme Setup */
 	add_filter( 'tally614ba1c62845593400f9fa8ea1517faa', '__return_true' );
 	
+	/* Connect Plugin Setup */
 	add_filter( 'bbpresstallyc_custom_css', '__return_true');
 	add_filter( 'buddypresstallyc_custom_css', '__return_true');
 	add_filter( 'wootallyc_custom_css', '__return_true');
 	
-	add_filter( 'tally_impoter_notice_display', '__return_true');
-	
+	/* Recommended Setup */
+	add_filter( 'tally_plugin_list_optiontree_required', '__return_true');
+	add_filter( 'tally_plugin_list_optiontree_force_activation', '__return_true');
+	add_filter( 'tally_plugin_list_contactform7_required', '__return_true');
+	add_filter( 'tally_plugin_list_optiontree_required', '__return_true');
 	add_filter( 'tally_recommended_plugins', 'tally_child_recommended_plugins');
+	
+	/* Admin Notice */
+	add_filter( 'tally_impoter_notice_display', '__return_true');
+	add_filter( 'tally_free_notice_display', '__return_false');
 	
 	//echo tally_get_serialize_option_data();
 	//echo tally_check_see();
